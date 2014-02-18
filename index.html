@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Grunt-generate-configs : Generate separate grunt configuration files automatically" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Grunt-generate-configs</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/creynders/grunt-generate-configs">View on GitHub</a>
+
+          <h1 id="project_title">Grunt-generate-configs</h1>
+          <h2 id="project_tagline">Generate separate grunt configuration files automatically</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/creynders/grunt-generate-configs/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/creynders/grunt-generate-configs/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="grunt-generate-configs-" class="anchor" href="#grunt-generate-configs-"><span class="octicon octicon-link"></span></a>grunt-generate-configs <a href="http://badge.fury.io/gh/creynders%2Fgrunt-generate-configs"><img src="https://badge.fury.io/gh/creynders%2Fgrunt-generate-configs.png" alt="GitHub version"></a><a href="http://travis-ci.org/creynders/grunt-generate-configs"><img src="https://secure.travis-ci.org/creynders/grunt-generate-configs.png?branch=master" alt="Build Status"></a>
+</h1>
+
+<blockquote>
+<p>Generate separate grunt configuration files automatically</p>
+</blockquote>
+
+<p>This grunt task will take your big, fat grunt configuration object and automatically generate separate files to store the task configuration objects in.
+It's a one time operation to be done before you start using <a href="https://creynders.github.io/load-grunt-configs">load-grunt-configs</a></p>
+
+<h2>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h2>
+
+<p>This plugin requires Grunt <code>~0.4.2</code></p>
+
+<p>If you haven't used <a href="http://gruntjs.com/">Grunt</a> before, be sure to check out the <a href="http://gruntjs.com/getting-started">Getting Started</a> guide, as it explains how to create a <a href="http://gruntjs.com/sample-gruntfile">Gruntfile</a> as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:</p>
+
+<pre lang="shell"><code>npm install grunt-generate-configs
+</code></pre>
+
+<p><em>(There's no need for the <code>--save</code> flags, since this task should be run only once.)</em></p>
+
+<p>Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">'grunt-generate-configs'</span><span class="p">);</span>
+</pre></div>
+
+<p>Or, if you use <a href="https://github.com/sindresorhus/load-grunt-tasks"><code>load-grunt-tasks</code></a> it will automatically be enabled.</p>
+
+<h2>
+<a name="the-generate_configs-task" class="anchor" href="#the-generate_configs-task"><span class="octicon octicon-link"></span></a>The "generate_configs" task</h2>
+
+<h3>
+<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h3>
+
+<h4>
+<a name="settings" class="anchor" href="#settings"><span class="octicon octicon-link"></span></a>Settings</h4>
+
+<p><em>grunt-generate-configs</em> has no configuration settings.</p>
+
+<h4>
+<a name="running-the-task" class="anchor" href="#running-the-task"><span class="octicon octicon-link"></span></a>Running the task</h4>
+
+<pre lang="shell"><code>grunt generate_configs
+</code></pre>
+
+<p>The task will parse your grunt configuration object and automatically create files for each task.
+For example, if this is your grunt configuration inside <code>Gruntfile.js</code>:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+    <span class="nx">jshint</span>   <span class="o">:</span> <span class="p">{</span>
+        <span class="nx">all</span>     <span class="o">:</span> <span class="p">[</span>
+            <span class="s1">'Gruntfile.js'</span><span class="p">,</span> <span class="s1">'tasks/*.js'</span><span class="p">,</span> <span class="s1">'&lt;%=nodeunit.tests%&gt;'</span>
+        <span class="p">],</span>
+        <span class="nx">options</span> <span class="o">:</span> <span class="p">{</span>
+            <span class="nx">jshintrc</span> <span class="o">:</span> <span class="s1">'.jshintrc'</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+
+    <span class="c1">// Before generating any new files, remove any previously-created files.</span>
+    <span class="nx">clean</span>    <span class="o">:</span> <span class="p">{</span>
+        <span class="nx">config</span> <span class="o">:</span> <span class="p">[</span><span class="s1">'config'</span><span class="p">],</span>
+    <span class="p">},</span>
+
+    <span class="c1">// Unit tests.</span>
+    <span class="nx">nodeunit</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="nx">tests</span> <span class="o">:</span> <span class="p">[</span><span class="s1">'tests/*_test.js'</span><span class="p">],</span>
+    <span class="p">},</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>It will create the files <code>jshint.json</code>, <code>clean.json</code> and <code>nodeunit.json</code> inside a <code>config</code> directory, containing the configuration objects:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">//file: config/jshint.json</span>
+<span class="p">{</span>
+  <span class="s2">"all"</span><span class="o">:</span> <span class="p">[</span>
+    <span class="s2">"Gruntfile.js"</span><span class="p">,</span>
+    <span class="s2">"tasks/*.js"</span><span class="p">,</span>
+    <span class="s2">"&lt;%=nodeunit.tests%&gt;"</span>
+  <span class="p">],</span>
+  <span class="s2">"options"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"jshintrc"</span><span class="o">:</span> <span class="s2">".jshintrc"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">//file: config/clean.json</span>
+<span class="p">{</span>
+  <span class="s2">"config"</span><span class="o">:</span> <span class="p">[</span>
+    <span class="s2">"config"</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">//file: config/nodeunit.json</span>
+<span class="p">{</span>
+  <span class="s2">"tests"</span><span class="o">:</span> <span class="p">[</span>
+    <span class="s2">"tests/*_test.js"</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Once these files are generated, use the <a href="https://creynders.github.io/load-grunt-configs">load-grunt-configs</a> module to automatically load all configuration files:</p>
+
+<pre lang="shell"><code>npm install load-grunt-configs --save-dev
+</code></pre>
+
+<p>and inside your <code>Gruntfile.js</code> replace the grunt configuration object with:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">configs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'load-grunt-configs'</span><span class="p">)(</span><span class="nx">grunt</span><span class="p">);</span>
+<span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">(</span><span class="nx">configs</span><span class="p">);</span>
+</pre></div>
+
+<p>See the project for more information, options and examples: <a href="https://creynders.github.io/load-grunt-configs">load-grunt-configs</a></p>
+
+<h3>
+<a name="command-line-options" class="anchor" href="#command-line-options"><span class="octicon octicon-link"></span></a>Command line options</h3>
+
+<ul>
+<li>
+<code>--target=&lt;dir&gt;</code> you can specify the output directory using the <code>target</code>-flag. E.g.: <code>grunt --target=foo</code> will create a <code>foo</code> directory instead of <code>config</code>.</li>
+<li>
+<code>--type=[js|json]</code> allows you to output the configuration objects as <code>json</code> files or javascript modules. E.g.: <code>grunt --type=js</code>
+</li>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright (c) 2014 Camille Reynders
+Licensed under the MIT license.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Grunt-generate-configs maintained by <a href="https://github.com/creynders">creynders</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-12080113-2");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
