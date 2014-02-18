@@ -1,7 +1,7 @@
 {
     "name"             : "grunt-generate-configs",
     "description"      : "Generate separate grunt configuration files automatically",
-    "version"          : "0.1.0",
+    "version"          : "0.1.1",
     "homepage"         : "https://github.com/creynders/grunt-generate-configs",
     "author"           : {
         "name"  : "Camille Reynders",
@@ -44,6 +44,10 @@
     },
     "keywords"         :
     [
-        "gruntplugin"
+        "grunt",
+        "gruntfile",
+        "gruntplugin",
+        "configuration"
+
     ]
 }
