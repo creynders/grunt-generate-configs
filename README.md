@@ -114,10 +114,11 @@ See the project for more information, options and examples: [load-grunt-configs]
 
 ### Command line options
 
-* `--target=<dir>` you can specify the output directory using the `target`-flag. E.g.: `grunt --target=foo` will create a `foo` directory instead of `config`.
-* `--type=[js|json]` allows you to output the configuration objects as `json` files or javascript modules. E.g.: `grunt --type=js`
+* `--target=<dir>` you can specify the output directory using the `target`-flag. E.g.: `grunt generate_configs --target=foo` will create a `foo` directory instead of `config`.
+* `--type=[js|json]` allows you to output the configuration objects as `json` files or javascript modules. E.g.: `grunt  generate_configs --type=js`
 
 ## License
+
 Copyright (c) 2014 Camille Reynders
 Licensed under the MIT license.
 
