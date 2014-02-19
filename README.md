@@ -122,4 +122,6 @@ See the project for more information, options and examples: [load-grunt-configs]
 Copyright (c) 2014 Camille Reynders
 Licensed under the MIT license.
 
+[![Analytics](https://ga-beacon.appspot.com/UA-12080113-4/grunt-generate-configs/README.md)](https://github.com/igrigorik/ga-beacon)
+
 [load-grunt-configs]: https://creynders.github.io/load-grunt-configs
