@@ -25,10 +25,11 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "grunt test; grunt test --type=js; grunt test --target=foo"
+    "test": "grunt test; grunt test --type=js; grunt test --target=foo; grunt test --type=yaml"
   },
   "dependencies": {
-    "inquirer": "~0.4.0"
+    "inquirer": "~0.4.0",
+    "js-yaml": "~3.0.1"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.0",

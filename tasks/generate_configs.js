@@ -9,6 +9,7 @@
 'use strict';
 
 var inquirer = require('inquirer');
+var yaml = require('js-yaml');
 
 function jsonify(data){
     return JSON.stringify(data, null, 2);
@@ -33,6 +34,14 @@ module.exports = function(grunt){
                         grunt.file.write(filename, jsonify(grunt.config.data[key]));
                         grunt.log.writeln('Generated: ' + filename);
                     };
+                    break;
+                case "yaml":
+                case "yml":
+                    handler = function(key){
+                        var filename = target + '/'+key+'.'+type;
+                        grunt.file.write(filename, yaml.safeDump(grunt.config.data[key]));
+                        grunt.log.writeln('Generated: ' + filename);
+                    }
                     break;
                 case "js":
                 case "module":
