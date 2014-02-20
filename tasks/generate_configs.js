@@ -37,7 +37,7 @@ module.exports = function(grunt){
                 case "js":
                 case "module":
                     handler = function(key){
-                        var filename = target + '/' + key + '.json';
+                        var filename = target + '/' + key + '.js';
                         grunt.file.write(filename, 'module.exports = ' + jsonify(grunt.config.data[key]));
                         grunt.log.writeln('Generated: ' + filename);
                     };
