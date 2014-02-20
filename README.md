@@ -116,6 +116,13 @@ See the project for more information, options and examples: [load-grunt-configs]
 
 * `--target=<dir>` you can specify the output directory using the `target`-flag. E.g.: `grunt generate_configs --target=foo` will create a `foo` directory instead of `config`.
 * `--type=[js|json]` allows you to output the configuration objects as `json` files or javascript modules. E.g.: `grunt  generate_configs --type=js`
+ 
+## Example output
+
+* [json](/demos/json)
+* [js](/demos/js)
+* [yaml](/demos/yaml)
+* [coffee](/demos/coffee)
 
 ## Changelog
 
