@@ -25,11 +25,12 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "grunt test; grunt test --type=js; grunt test --target=foo; grunt test --type=yaml"
+    "test": "grunt test; grunt test --type=js; grunt test --target=foo; grunt test --type=yaml; grunt test --type=coffee"
   },
   "dependencies": {
     "inquirer": "~0.4.0",
-    "js-yaml": "~3.0.1"
+    "js-yaml": "~3.0.1",
+    "js2coffee": "~0.2.7"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.0",

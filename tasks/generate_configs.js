@@ -10,6 +10,7 @@
 
 var inquirer = require('inquirer');
 var yaml = require('js-yaml');
+var coffee = require('js2coffee');
 
 function jsonify(data){
     return JSON.stringify(data, null, 2);
@@ -40,6 +41,13 @@ module.exports = function(grunt){
                     handler = function(key){
                         var filename = target + '/'+key+'.'+type;
                         grunt.file.write(filename, yaml.safeDump(grunt.config.data[key]));
+                        grunt.log.writeln('Generated: ' + filename);
+                    }
+                    break;
+                case "coffee":
+                    handler = function(key){
+                        var filename = target + '/' + key + '.coffee';
+                        grunt.file.write(filename, coffee.build('module.exports = ' + jsonify(grunt.config.data[key]), {indent: "  "}));
                         grunt.log.writeln('Generated: ' + filename);
                     }
                     break;
