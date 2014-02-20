@@ -1,0 +1,5 @@
+{
+  "tests": [
+    "tests/*_test.js"
+  ]
+}
