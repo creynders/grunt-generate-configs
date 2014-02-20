@@ -1,12 +1,8 @@
 var fs = require('fs');
-
-function filesExist(source, filenames){
-    var found = true;
-    filenames.forEach(function(filename){
-        found = found && source.indexOf(filename) > -1;
-    });
-    return found;
-}
+var glob = require('glob');
+var path = require('path');
+var _ = require('lodash');
+var argv = require('minimist')(process.argv);
 
 exports['suite'] = function(test){
     test.expect(1);
@@ -15,17 +11,16 @@ exports['suite'] = function(test){
 };
 
 exports['config files created'] = function(test){
-    var files = fs.readdirSync('config');
-    var allfound = filesExist(files,
-    [
-        'clean.json',
-        'jshint.json',
-        'nodeunit.json',
-        'markdown.json',
-        'watch.json',
-        'connect.json'
-    ]);
+    var tasks = [ 'clean', 'connect', 'jshint', 'markdown', 'nodeunit', 'watch' ];
+
+    var target = argv.target || 'config';
+
+    var files = glob.sync(target + '/*.js*').map(function(filepath){
+        return path.basename(filepath, path.extname(filepath));
+    });
+
+    var diff = _.difference(files, tasks);
     test.expect(1);
-    test.ok(allfound);
+    test.equal(diff.length, 0);
     test.done();
 };

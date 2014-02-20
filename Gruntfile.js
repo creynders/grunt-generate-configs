@@ -118,13 +118,18 @@ module.exports = function(grunt){
 
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
-    grunt.registerTask('test',
-    [
-        'clean:config',
-        'generate_configs',
-        'nodeunit',
-        'clean:config'
-    ]);
+    grunt.registerTask('test', function(){
+        if(grunt.option('target')){
+            grunt.config('clean.config', grunt.option('target'));
+        }
+        grunt.task.run(
+        [
+            'clean:config',
+            'generate_configs',
+            'nodeunit',
+            'clean:config'
+        ]);
+    });
 
     grunt.registerTask('preview',
     [
