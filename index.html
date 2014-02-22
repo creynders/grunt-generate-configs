@@ -36,10 +36,10 @@
 </h1>
 
 <blockquote>
-<p>Generate separate grunt configuration files automatically</p>
+<p>CLI to generate separate grunt configuration files automatically</p>
 </blockquote>
 
-<p>This grunt task will take your big, fat grunt configuration object and automatically generate separate files to store the task configuration objects in.
+<p>This command will take your big, fat grunt configuration object and automatically generate separate files to store the task configuration objects in.
 It's a one time operation to be done before you start using <a href="https://creynders.github.io/load-grunt-configs">load-grunt-configs</a></p>
 
 <h2>
@@ -54,32 +54,30 @@ It's a one time operation to be done before you start using <a href="https://cre
 
 <p><em>(There's no need for the <code>--save</code> flags, since this task should be run only once.)</em></p>
 
-<p>Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:</p>
+<p>Once the plugin has been installed, you can run it from the command line:</p>
 
-<div class="highlight highlight-javascript"><pre><span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">'grunt-generate-configs'</span><span class="p">);</span>
-</pre></div>
-
-<p>Or, if you use <a href="https://github.com/sindresorhus/load-grunt-tasks"><code>load-grunt-tasks</code></a> it will automatically be enabled.</p>
-
-<h2>
-<a name="the-generate_configs-task" class="anchor" href="#the-generate_configs-task"><span class="octicon octicon-link"></span></a>The "generate_configs" task</h2>
-
-<h3>
-<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h3>
-
-<h4>
-<a name="settings" class="anchor" href="#settings"><span class="octicon octicon-link"></span></a>Settings</h4>
-
-<p><em>grunt-generate-configs</em> has no configuration settings.</p>
-
-<h4>
-<a name="running-the-task" class="anchor" href="#running-the-task"><span class="octicon octicon-link"></span></a>Running the task</h4>
-
-<pre lang="shell"><code>grunt generate_configs
+<pre lang="shell"><code>node_modules/.bin/generate_configs
 </code></pre>
 
-<p>The task will parse your grunt configuration object and automatically create files for each task.
-For example, if this is your grunt configuration inside <code>Gruntfile.js</code>:</p>
+<p>The command will parse your grunt configuration object and automatically create files for each task.</p>
+
+<p>Now you can safely remove the module if you want:</p>
+
+<pre lang="shell"><code>npm uninstall grunt-generate-configs
+</code></pre>
+
+<h2>
+<a name="command-line-options" class="anchor" href="#command-line-options"><span class="octicon octicon-link"></span></a>Command line options</h2>
+
+<ul>
+<li>
+<code>--target=&lt;dir&gt;</code> you can specify the output directory using the <code>target</code>-flag. E.g.: <code>grunt generate_configs --target=foo</code> will create a <code>foo</code> directory instead of <code>config</code>.</li>
+<li>
+<code>--type=[js|json|coffee|yaml]</code> allows you to output the configuration objects as <code>json</code>, <code>yaml</code>, <code>coffee</code> files or javascript modules.</li>
+</ul><h2>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<p>For example, if this is your grunt configuration inside <code>Gruntfile.js</code>:</p>
 
 <div class="highlight highlight-javascript"><pre><span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
     <span class="nx">jshint</span>   <span class="o">:</span> <span class="p">{</span>
@@ -148,16 +146,7 @@ For example, if this is your grunt configuration inside <code>Gruntfile.js</code
 <p>See the project for more information, options and examples: <a href="https://creynders.github.io/load-grunt-configs">load-grunt-configs</a></p>
 
 <h3>
-<a name="command-line-options" class="anchor" href="#command-line-options"><span class="octicon octicon-link"></span></a>Command line options</h3>
-
-<ul>
-<li>
-<code>--target=&lt;dir&gt;</code> you can specify the output directory using the <code>target</code>-flag. E.g.: <code>grunt generate_configs --target=foo</code> will create a <code>foo</code> directory instead of <code>config</code>.</li>
-<li>
-<code>--type=[js|json]</code> allows you to output the configuration objects as <code>json</code> files or javascript modules. E.g.: <code>grunt  generate_configs --type=js</code>
-</li>
-</ul><h2>
-<a name="example-output" class="anchor" href="#example-output"><span class="octicon octicon-link"></span></a>Example output</h2>
+<a name="example-output" class="anchor" href="#example-output"><span class="octicon octicon-link"></span></a>Example output</h3>
 
 <ul>
 <li><a href="/demos/json">json</a></li>
@@ -168,6 +157,11 @@ For example, if this is your grunt configuration inside <code>Gruntfile.js</code
 <a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a>Changelog</h2>
 
 <h3>
+<a name="v040" class="anchor" href="#v040"><span class="octicon octicon-link"></span></a>v0.4.0</h3>
+
+<ul>
+<li>adds cli</li>
+</ul><h3>
 <a name="v030" class="anchor" href="#v030"><span class="octicon octicon-link"></span></a>v0.3.0</h3>
 
 <ul>
