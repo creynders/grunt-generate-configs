@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+
+var grunt = require('grunt');
+grunt.loadNpmTasks('grunt-generate-configs');
+grunt.cli.tasks = ['generate_configs'];
+grunt.cli();
