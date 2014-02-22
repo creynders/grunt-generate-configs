@@ -23,7 +23,7 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-generate-configs');
 ```
 
-Or, if you use [`load-grunt-tasks`](https://github.com/sindresorhus/load-grunt-tasks) it will automatically be enabled.
+Don't forget to remove that line once you're finished !
 
 ## The "generate_configs" task
 
