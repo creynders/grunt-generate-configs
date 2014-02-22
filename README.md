@@ -15,9 +15,8 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 npm install grunt-generate-configs -g
 ```
 
-_(There's no need for the `--save` flags, since this task should be run only once.)_
-
-Once the plugin has been installed, you can run it from the command line:
+We install it globally, so you can reuse it for all your projects.
+Once the plugin has been installed, you can run it from the command line in the directory of your project:
 
 ```shell
 generate_configs
