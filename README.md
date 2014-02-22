@@ -20,7 +20,7 @@ _(There's no need for the `--save` flags, since this task should be run only onc
 Once the plugin has been installed, you can run it from the command line:
 
 ```shell
-generate_configs
+node_modules/.bin/generate_configs
 ```
 
 The command will parse your grunt configuration object and automatically create files for each task.
