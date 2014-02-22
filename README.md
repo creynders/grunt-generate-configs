@@ -1,8 +1,8 @@
 # grunt-generate-configs [![GitHub version](https://badge.fury.io/gh/creynders%2Fgrunt-generate-configs.png)](http://badge.fury.io/gh/creynders%2Fgrunt-generate-configs)[![Build Status](https://secure.travis-ci.org/creynders/grunt-generate-configs.png?branch=master)](http://travis-ci.org/creynders/grunt-generate-configs)
 
-> Generate separate grunt configuration files automatically
+> CLI to generate separate grunt configuration files automatically
 
-This grunt task will take your big, fat grunt configuration object and automatically generate separate files to store the task configuration objects in.
+This command will take your big, fat grunt configuration object and automatically generate separate files to store the task configuration objects in.
 It's a one time operation to be done before you start using [load-grunt-configs][load-grunt-configs]
 
 ## Getting Started
@@ -17,29 +17,27 @@ npm install grunt-generate-configs
 
 _(There's no need for the `--save` flags, since this task should be run only once.)_
 
-Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
-
-```javascript
-grunt.loadNpmTasks('grunt-generate-configs');
-```
-
-Don't forget to remove that line once you're finished !
-
-## The "generate_configs" task
-
-### Overview
-
-#### Settings
-
-_grunt-generate-configs_ has no configuration settings.
-
-#### Running the task
+Once the plugin has been installed, you can run it from the command line:
 
 ```shell
-grunt generate_configs
+generate_configs
 ```
 
-The task will parse your grunt configuration object and automatically create files for each task.
+The command will parse your grunt configuration object and automatically create files for each task.
+
+Now you can safely remove the module if you want:
+
+```shell
+npm uninstall grunt-generate-configs
+```
+
+## Command line options
+
+* `--target=<dir>` you can specify the output directory using the `target`-flag. E.g.: `grunt generate_configs --target=foo` will create a `foo` directory instead of `config`.
+* `--type=[js|json|coffee|yaml]` allows you to output the configuration objects as `json`, `yaml`, `coffee` files or javascript modules.
+
+## Examples
+
 For example, if this is your grunt configuration inside `Gruntfile.js`:
 
 ```javascript
@@ -112,12 +110,7 @@ grunt.initConfig(configs);
 
 See the project for more information, options and examples: [load-grunt-configs][load-grunt-configs]
 
-### Command line options
-
-* `--target=<dir>` you can specify the output directory using the `target`-flag. E.g.: `grunt generate_configs --target=foo` will create a `foo` directory instead of `config`.
-* `--type=[js|json]` allows you to output the configuration objects as `json` files or javascript modules. E.g.: `grunt  generate_configs --type=js`
- 
-## Example output
+### Example output
 
 * [json](/demos/json)
 * [js](/demos/js)
@@ -125,6 +118,10 @@ See the project for more information, options and examples: [load-grunt-configs]
 * [coffee](/demos/coffee)
 
 ## Changelog
+
+### v0.4.0
+
+* adds cli
 
 ### v0.3.0
 
