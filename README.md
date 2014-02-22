@@ -12,7 +12,7 @@ This plugin requires Grunt `~0.4.2`
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-generate-configs
+npm install grunt-generate-configs -g
 ```
 
 _(There's no need for the `--save` flags, since this task should be run only once.)_
@@ -20,16 +20,10 @@ _(There's no need for the `--save` flags, since this task should be run only onc
 Once the plugin has been installed, you can run it from the command line:
 
 ```shell
-node_modules/.bin/generate_configs
+generate_configs
 ```
 
 The command will parse your grunt configuration object and automatically create files for each task.
-
-Now you can safely remove the module if you want:
-
-```shell
-npm uninstall grunt-generate-configs
-```
 
 ## Command line options
 
