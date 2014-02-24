@@ -18,9 +18,23 @@ module.exports = function(grunt){
 
     grunt.registerTask('generate_configs', 'Splits your grunt configuration into separate files', function(){
         var done = this.async();
+        var type;
+        if(grunt.option('json')){
+            type = 'json';
+        }
+        if(grunt.option('js')){
+            type = 'js';
+        }
+        if(grunt.option('coffee')){
+            type = 'coffee';
+        }
+        if(grunt.option('yaml')){
+            type = 'yaml';
+        }
+        var type = type || grunt.option('type') || 'json';
         var opts = {
             target : grunt.option('target') || 'config',
-            type : grunt.option('type') || 'json',
+            type : type,
             data : grunt.config.data,
             log : grunt.log.writeln
         };
