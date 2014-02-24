@@ -9,7 +9,7 @@
 'use strict';
 
 var inquirer = require('inquirer');
-var writeFiles = require('./lib/writeFiles');
+var writeFiles = require('../lib/writeFiles');
 
 module.exports = function(grunt){
 
@@ -18,7 +18,8 @@ module.exports = function(grunt){
 
     grunt.registerTask('generate_configs', 'Splits your grunt configuration into separate files', function(){
         var done = this.async();
-        var type;
+        var type,
+            generated;
         if(grunt.option('json')){
             type = 'json';
         }
@@ -35,8 +36,7 @@ module.exports = function(grunt){
         var opts = {
             target : grunt.option('target') || 'config',
             type : type,
-            data : grunt.config.data,
-            log : grunt.log.writeln
+            data : grunt.config.data
         };
 
         if(grunt.file.exists(opts.target)){
@@ -50,15 +50,20 @@ module.exports = function(grunt){
                 }
             ], function(answers){
                 if(answers.overwrite){
-                    writeFiles(opts);
+                    generated = writeFiles(opts);
                     done(true);
                 }else{
                     done(false);
                 }
             });
         }else{
-            writeFiles(opts);
+            generated = writeFiles(opts);
             done(true);
+        }
+        if( generated && generated.length > 0){
+            generated.forEach(function(filename){
+               grunt.log.writeln('Generated: ' + filename);
+            });
         }
     });
 };

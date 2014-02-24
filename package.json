@@ -58,5 +58,6 @@
   ],
   "bin": {
     "generate_configs": "./bin/generate_configs"
-  }
+  },
+  "main": "index.js"
 }
