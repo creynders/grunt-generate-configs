@@ -9,12 +9,7 @@
 'use strict';
 
 var inquirer = require('inquirer');
-var yaml = require('js-yaml');
-var coffee = require('js2coffee');
-
-function jsonify(data){
-    return JSON.stringify(data, null, 2);
-}
+var writeFiles = require('./lib/writeFiles');
 
 module.exports = function(grunt){
 
@@ -23,65 +18,32 @@ module.exports = function(grunt){
 
     grunt.registerTask('generate_configs', 'Splits your grunt configuration into separate files', function(){
         var done = this.async();
-        var target = grunt.option('target') || 'config';
-        var type = grunt.option('type') || 'json';
+        var opts = {
+            target : grunt.option('target') || 'config',
+            type : grunt.option('type') || 'json',
+            data : grunt.config.data,
+            log : grunt.log.writeln
+        };
 
-        function writeFiles(){
-            var handler;
-            switch(type){
-                case "json":
-                    handler = function(key){
-                        var filename = target + '/' + key + '.json';
-                        grunt.file.write(filename, jsonify(grunt.config.data[key]));
-                        grunt.log.writeln('Generated: ' + filename);
-                    };
-                    break;
-                case "yaml":
-                case "yml":
-                    handler = function(key){
-                        var filename = target + '/'+key+'.'+type;
-                        grunt.file.write(filename, yaml.safeDump(grunt.config.data[key]));
-                        grunt.log.writeln('Generated: ' + filename);
-                    }
-                    break;
-                case "coffee":
-                    handler = function(key){
-                        var filename = target + '/' + key + '.coffee';
-                        grunt.file.write(filename, coffee.build('module.exports = ' + jsonify(grunt.config.data[key]), {indent: "  "}));
-                        grunt.log.writeln('Generated: ' + filename);
-                    }
-                    break;
-                case "js":
-                case "module":
-                    handler = function(key){
-                        var filename = target + '/' + key + '.js';
-                        grunt.file.write(filename, 'module.exports = ' + jsonify(grunt.config.data[key]));
-                        grunt.log.writeln('Generated: ' + filename);
-                    };
-                    break;
-            }
-            Object.keys(grunt.config.data).forEach(handler);
-        }
-
-        if(grunt.file.exists(target)){
+        if(grunt.file.exists(opts.target)){
             inquirer.prompt(
             [
                 {
                     type    : "confirm",
-                    message : "A directory '" + target + "' already exists, its files will be overwritten.\nAre you sure you want to continue?",
+                    message : "A directory '" + opts.target + "' already exists, its files will be overwritten.\nAre you sure you want to continue?",
                     name    : "overwrite",
                     default : false
                 }
             ], function(answers){
                 if(answers.overwrite){
-                    writeFiles();
+                    writeFiles(opts);
                     done(true);
                 }else{
                     done(false);
                 }
             });
         }else{
-            writeFiles();
+            writeFiles(opts);
             done(true);
         }
     });
