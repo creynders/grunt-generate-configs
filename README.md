@@ -27,7 +27,8 @@ The command will parse your grunt configuration object and automatically create 
 ## Command line options
 
 * `--target=<dir>` you can specify the output directory using the `target`-flag. E.g.: `grunt generate_configs --target=foo` will create a `foo` directory instead of `config`.
-* `--type=[js|json|coffee|yaml]` allows you to output the configuration objects as `json`, `yaml`, `coffee` files or javascript modules.
+* `--type=[js|json|coffee|yaml|yml]` allows you to output the configuration objects as `json`, `yaml`, `coffee` files or javascript modules.
+* `--json`, `--coffee`, `--js`, `--yaml` and `--yml` as shorthand for `type=<type>`. The `type` flag will always override any shorthands.
 
 ## Examples
 
@@ -112,30 +113,41 @@ See the project for more information, options and examples: [load-grunt-configs]
 
 ## Changelog
 
-### v0.4.0
+#### v0.5.0
+
+* Update unit tests to include all flags
+* Expose main method for parsing of grunt config obj
+* Add js, coffee, yaml, json flags
+* Separate filegen to lib and add removal of config dir upon overwrite
+
+#### v0.4.1
+
+* Makes the command global
+
+#### v0.4.0
 
 * adds cli
 
-### v0.3.0
+#### v0.3.0
 
 * Adds demos
 * Adds yaml support
 * Adds Coffeescript support
 
-### v0.2.0
+#### v0.2.0
 
 * Test all possibilities, idiot!
 * fixes #2, incorrect ext for js files
 
-### v0.1.2
+#### v0.1.2
 
 * Fixes #1, moved inquirer from devDeps to deps
 
-### v0.1.1
+#### v0.1.1
 
 * keywords, keywords, keywords, sigh
 
-### v0.1.0
+#### v0.1.0
 
 * Fixes CLI options examples
 * creates task grunt-generate-configs
