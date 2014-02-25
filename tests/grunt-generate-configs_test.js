@@ -13,13 +13,12 @@ exports['suite'] = function(test){
 exports['config files created'] = function(test){
     var tasks = [ 'clean', 'connect', 'jshint', 'markdown', 'nodeunit', 'watch' ];
 
-    var target = argv.target || 'config';
+    var target = process.env.GGG_target || 'config';
 
-    var files = glob.sync(target + '/*.js*').map(function(filepath){
+    var files = glob.sync(target + '/*.*').map(function(filepath){
         return path.basename(filepath, path.extname(filepath));
     });
-
-    var diff = _.difference(files, tasks);
+    var diff = _.difference(tasks, files);
     test.expect(1);
     test.equal(diff.length, 0);
     test.done();
