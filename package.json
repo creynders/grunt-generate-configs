@@ -26,7 +26,7 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "grunt test; grunt test --type=js; grunt test --target=foo; grunt test --type=yaml; grunt test --type=coffee"
+    "test": "grunt test"
   },
   "dependencies": {
     "inquirer": "~0.4.0",

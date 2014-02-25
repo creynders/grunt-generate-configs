@@ -11,6 +11,7 @@
 
 'use strict';
 
+
 module.exports = function(grunt){
 
     // Actually load this plugin's task(s).
@@ -22,11 +23,8 @@ module.exports = function(grunt){
     // Project configuration.
     grunt.initConfig({
         jshint   : {
-            all     :
-            [
-                'Gruntfile.js',
-                'tasks/*.js',
-                '<%=nodeunit.tests%>'
+            all     : [
+                'Gruntfile.js', 'tasks/*.js', '<%=nodeunit.tests%>'
             ],
             options : {
                 jshintrc : '.jshintrc'
@@ -35,28 +33,24 @@ module.exports = function(grunt){
 
         // Before generating any new files, remove any previously-created files.
         clean    : {
-            config :
-            [
+            config : [
                 'config'
             ],
-            tmp    :
-            [
+            tmp    : [
                 '.tmp'
             ]
         },
 
         // Unit tests.
         nodeunit : {
-            tests :
-            [
+            tests : [
                 'tests/*_test.js'
             ]
         },
 
         markdown : {
             docs : {
-                files   :
-                [
+                files   : [
                     {
                         expand : true,
                         src    : 'README.md',
@@ -74,14 +68,11 @@ module.exports = function(grunt){
         },
         watch    : {
             docs       : {
-                files   :
-                [
+                files   : [
                     'README.md'
                 ],
-                tasks   :
-                [
-                    'clean:tmp',
-                    'markdown:docs'
+                tasks   : [
+                    'clean:tmp', 'markdown:docs'
                 ],
                 options : {
                     livereload : true
@@ -91,8 +82,7 @@ module.exports = function(grunt){
                 options : {
                     livereload : '<%= connect.options.livereload %>'
                 },
-                files   :
-                [
+                files   : [
                     '.tmp/{,*/}*.html'
                 ]
             }
@@ -107,8 +97,7 @@ module.exports = function(grunt){
             livereload : {
                 options : {
                     open : true,
-                    base :
-                    [
+                    base : [
                         '.tmp'
                     ]
                 }
@@ -117,34 +106,38 @@ module.exports = function(grunt){
         }
     });
 
+    function generateConfigs(flags){
+        grunt.task.run([
+            'set_options:' + flags, 'clean:config', 'generate_configs', 'nodeunit', 'clean:config'
+        ]);
+    }
+
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
+    //grunt test; grunt test --type=js; grunt test --target=foo; grunt test --type=yaml; grunt test --type=coffee
     grunt.registerTask('test', function(){
-        if(grunt.option('target')){
-            grunt.config('clean.config', grunt.option('target'));
-        }
-        grunt.task.run(
-        [
-            'clean:config',
-            'generate_configs',
-            'nodeunit',
-            'clean:config'
-        ]);
+        grunt.loadTasks('tests/support');
+        generateConfigs('');
+        generateConfigs('--target=testConfig');
+        generateConfigs('--type=js');
+        generateConfigs('--type=json');
+        generateConfigs('--type=yaml');
+        generateConfigs('--type=yml');
+        generateConfigs('--type=coffee');
+        generateConfigs('--coffee');
+        generateConfigs('--yaml');
+        generateConfigs('--yml');
+        generateConfigs('--js');
+        generateConfigs('--json');
     });
 
-    grunt.registerTask('preview',
-    [
-        'clean:tmp',
-        'markdown:docs',
-        'connect:livereload',
-        'watch'
+    grunt.registerTask('preview', [
+        'clean:tmp', 'markdown:docs', 'connect:livereload', 'watch'
     ]);
 
     // By default, lint and run all tests.
-    grunt.registerTask('default',
-    [
-        'jshint',
-        'test'
+    grunt.registerTask('default', [
+        'jshint', 'test'
     ]);
 
 };
