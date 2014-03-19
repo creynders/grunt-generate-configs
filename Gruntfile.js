@@ -124,6 +124,8 @@ module.exports = function(grunt){
         generateConfigs('--type=yaml');
         generateConfigs('--type=yml');
         generateConfigs('--type=coffee');
+        generateConfigs('--type=cson');
+        generateConfigs('--cson');
         generateConfigs('--coffee');
         generateConfigs('--yaml');
         generateConfigs('--yml');

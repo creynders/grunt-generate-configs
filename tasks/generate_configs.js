@@ -16,7 +16,7 @@ module.exports = function(grunt){
     // Please see the Grunt documentation for more information regarding task
     // creation: http://gruntjs.com/creating-tasks
 
-    var typeFlags = ['json', 'js', 'coffee', 'yaml', 'yml'];
+    var typeFlags = ['json', 'js', 'coffee', 'yaml', 'yml', 'cson'];
 
     grunt.registerTask('generate_configs', 'Splits your grunt configuration into separate files', function(){
         var done = this.async();
