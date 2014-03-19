@@ -18,8 +18,7 @@ exports['config files created'] = function(test){
     var files = glob.sync(target + '/*.*').map(function(filepath){
         return path.basename(filepath, path.extname(filepath));
     });
-    var diff = _.difference(tasks, files);
     test.expect(1);
-    test.equal(diff.length, 0);
+    test.deepEqual(files, tasks);
     test.done();
 };
