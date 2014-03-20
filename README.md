@@ -5,6 +5,14 @@
 This command will take your big, fat grunt configuration object and automatically generate separate files to store the task configuration objects in.
 It's a one time operation to be done before you start using [load-grunt-configs][load-grunt-configs]
 
+Generates config files in following formats:
+
+* **json** (default)
+* **js** module
+* **coffee** module
+* **cson**
+* **yaml**
+
 ## Getting Started
 
 This plugin requires Grunt `~0.4.2`
@@ -27,8 +35,8 @@ The command will parse your grunt configuration object and automatically create 
 ## Command line options
 
 * `--target=<dir>` you can specify the output directory using the `target`-flag. E.g.: `grunt generate_configs --target=foo` will create a `foo` directory instead of `config`.
-* `--type=[js|json|coffee|yaml|yml]` allows you to output the configuration objects as `json`, `yaml`, `coffee` files or javascript modules.
-* `--json`, `--coffee`, `--js`, `--yaml` and `--yml` as shorthand for `type=<type>`. The `type` flag will always override any shorthands.
+* `--type=[js|json|coffee|cson|yaml|yml]` allows you to output the configuration objects as `json`, `yaml`, `cson`, `coffee` or `js` files.
+* `--json`, `--coffee`, `--cson`, `--js`, `--yaml` and `--yml` as shorthand for `type=<type>`. The `type` flag will always override any shorthands.
 
 ## Examples
 
@@ -110,8 +118,16 @@ See the project for more information, options and examples: [load-grunt-configs]
 * [js](/demos/js)
 * [yaml](/demos/yaml)
 * [coffee](/demos/coffee)
+* cson: TODO
 
 ## Changelog
+
+#### v0.5.1
+
+* Add cson support
+* Fix incorrect testing
+* Update .travis.yml to test all branches
+* Remove support for node < v0.10
 
 #### v0.5.0
 
