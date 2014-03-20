@@ -1,9 +1,11 @@
+var typeFlags = require('../../tasks/generate_configs' ).typeFlags;
+
 module.exports = function(grunt){
 
     // Please see the Grunt documentation for more information regarding task
     // creation: http://gruntjs.com/creating-tasks
 
-    var opts = ['type', 'target', 'coffee', 'yaml', 'js', 'json', 'yml']
+    var opts = ['type', 'target'].concat(typeFlags);
 
     grunt.registerTask('set_options',function(flags){
         opts.forEach(function(opt){

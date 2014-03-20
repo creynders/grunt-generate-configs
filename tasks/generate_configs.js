@@ -11,12 +11,13 @@
 var inquirer = require('inquirer');
 var writeFiles = require('../lib/writeFiles');
 
+var typeFlags = ['json', 'js', 'coffee', 'yaml', 'yml', 'cson'];
+
 module.exports = function(grunt){
 
     // Please see the Grunt documentation for more information regarding task
     // creation: http://gruntjs.com/creating-tasks
 
-    var typeFlags = ['json', 'js', 'coffee', 'yaml', 'yml', 'cson'];
 
     grunt.registerTask('generate_configs', 'Splits your grunt configuration into separate files', function(){
         var done = this.async();
@@ -65,3 +66,5 @@ module.exports = function(grunt){
         }
     });
 };
+
+module.exports.typeFlags = typeFlags;
