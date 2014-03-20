@@ -33,7 +33,8 @@
     "js-yaml": "~3.0.1",
     "js2coffee": "~0.2.7",
     "rimraf": "~2.2.6",
-    "cson": "^1.4.5"
+    "cson": "^1.4.5",
+    "js-beautify": "^1.4.2"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.0",
