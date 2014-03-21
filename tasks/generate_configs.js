@@ -21,7 +21,7 @@ module.exports = function(grunt){
 
     grunt.registerTask('generate_configs', 'Splits your grunt configuration into separate files', function(){
         var done = this.async();
-        var type, generated;
+        var generated;
 
         function complete(generated){
             if(generated && generated.length > 0){
