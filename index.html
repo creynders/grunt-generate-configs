@@ -42,29 +42,34 @@
 <p>This command will take your big, fat grunt configuration object and automatically generate separate files to store the task configuration objects in.
 It's a one time operation to be done before you start using <a href="https://creynders.github.io/load-grunt-configs">load-grunt-configs</a></p>
 
-<h2>
+<p>Generates config files in following formats:</p>
+
+<ul>
+<li>
+<strong>json</strong> (default)</li>
+<li>
+<strong>js</strong> module</li>
+<li>
+<strong>coffee</strong> module</li>
+<li><strong>cson</strong></li>
+<li><strong>yaml</strong></li>
+</ul><h2>
 <a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h2>
 
 <p>This plugin requires Grunt <code>~0.4.2</code></p>
 
 <p>If you haven't used <a href="http://gruntjs.com/">Grunt</a> before, be sure to check out the <a href="http://gruntjs.com/getting-started">Getting Started</a> guide, as it explains how to create a <a href="http://gruntjs.com/sample-gruntfile">Gruntfile</a> as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:</p>
 
-<pre lang="shell"><code>npm install grunt-generate-configs
+<pre lang="shell"><code>npm install grunt-generate-configs -g
 </code></pre>
 
-<p><em>(There's no need for the <code>--save</code> flags, since this task should be run only once.)</em></p>
+<p>We install it globally, so you can reuse it for all your projects.
+Once the plugin has been installed, you can run it from the command line in the directory of your project:</p>
 
-<p>Once the plugin has been installed, you can run it from the command line:</p>
-
-<pre lang="shell"><code>node_modules/.bin/generate_configs
+<pre lang="shell"><code>generate_configs
 </code></pre>
 
 <p>The command will parse your grunt configuration object and automatically create files for each task.</p>
-
-<p>Now you can safely remove the module if you want:</p>
-
-<pre lang="shell"><code>npm uninstall grunt-generate-configs
-</code></pre>
 
 <h2>
 <a name="command-line-options" class="anchor" href="#command-line-options"><span class="octicon octicon-link"></span></a>Command line options</h2>
@@ -73,7 +78,9 @@ It's a one time operation to be done before you start using <a href="https://cre
 <li>
 <code>--target=&lt;dir&gt;</code> you can specify the output directory using the <code>target</code>-flag. E.g.: <code>grunt generate_configs --target=foo</code> will create a <code>foo</code> directory instead of <code>config</code>.</li>
 <li>
-<code>--type=[js|json|coffee|yaml]</code> allows you to output the configuration objects as <code>json</code>, <code>yaml</code>, <code>coffee</code> files or javascript modules.</li>
+<code>--type=[js|json|coffee|cson|yaml|yml]</code> allows you to output the configuration objects as <code>json</code>, <code>yaml</code>, <code>cson</code>, <code>coffee</code> or <code>js</code> files.</li>
+<li>
+<code>--json</code>, <code>--coffee</code>, <code>--cson</code>, <code>--js</code>, <code>--yaml</code> and <code>--yml</code> as shorthand for <code>type=&lt;type&gt;</code>. The <code>type</code> flag will always override any shorthands.</li>
 </ul><h2>
 <a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
 
@@ -153,39 +160,62 @@ It's a one time operation to be done before you start using <a href="https://cre
 <li><a href="/demos/js">js</a></li>
 <li><a href="/demos/yaml">yaml</a></li>
 <li><a href="/demos/coffee">coffee</a></li>
+<li>cson: TODO</li>
 </ul><h2>
 <a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a>Changelog</h2>
 
-<h3>
-<a name="v040" class="anchor" href="#v040"><span class="octicon octicon-link"></span></a>v0.4.0</h3>
+<h4>
+<a name="v051" class="anchor" href="#v051"><span class="octicon octicon-link"></span></a>v0.5.1</h4>
+
+<ul>
+<li>Use util.inspect for js generation</li>
+<li>Add cson support</li>
+<li>Fix incorrect testing</li>
+<li>Update .travis.yml to test all branches</li>
+<li>Remove support for node &lt; v0.10</li>
+</ul><h4>
+<a name="v050" class="anchor" href="#v050"><span class="octicon octicon-link"></span></a>v0.5.0</h4>
+
+<ul>
+<li>Update unit tests to include all flags</li>
+<li>Expose main method for parsing of grunt config obj</li>
+<li>Add js, coffee, yaml, json flags</li>
+<li>Separate filegen to lib and add removal of config dir upon overwrite</li>
+</ul><h4>
+<a name="v041" class="anchor" href="#v041"><span class="octicon octicon-link"></span></a>v0.4.1</h4>
+
+<ul>
+<li>Makes the command global</li>
+</ul><h4>
+<a name="v040" class="anchor" href="#v040"><span class="octicon octicon-link"></span></a>v0.4.0</h4>
 
 <ul>
 <li>adds cli</li>
-</ul><h3>
-<a name="v030" class="anchor" href="#v030"><span class="octicon octicon-link"></span></a>v0.3.0</h3>
+</ul><h4>
+<a name="v030" class="anchor" href="#v030"><span class="octicon octicon-link"></span></a>v0.3.0</h4>
 
 <ul>
 <li>Adds demos</li>
 <li>Adds yaml support</li>
 <li>Adds Coffeescript support</li>
-</ul><h3>
-<a name="v020" class="anchor" href="#v020"><span class="octicon octicon-link"></span></a>v0.2.0</h3>
+</ul><h4>
+<a name="v020" class="anchor" href="#v020"><span class="octicon octicon-link"></span></a>v0.2.0</h4>
 
 <ul>
 <li>Test all possibilities, idiot!</li>
 <li>fixes #2, incorrect ext for js files</li>
-</ul><h3>
-<a name="v012" class="anchor" href="#v012"><span class="octicon octicon-link"></span></a>v0.1.2</h3>
+</ul><h4>
+<a name="v012" class="anchor" href="#v012"><span class="octicon octicon-link"></span></a>v0.1.2</h4>
 
 <ul>
 <li>Fixes #1, moved inquirer from devDeps to deps</li>
-</ul><h3>
-<a name="v011" class="anchor" href="#v011"><span class="octicon octicon-link"></span></a>v0.1.1</h3>
+</ul><h4>
+<a name="v011" class="anchor" href="#v011"><span class="octicon octicon-link"></span></a>v0.1.1</h4>
 
 <ul>
 <li>keywords, keywords, keywords, sigh</li>
-</ul><h3>
-<a name="v010" class="anchor" href="#v010"><span class="octicon octicon-link"></span></a>v0.1.0</h3>
+</ul><h4>
+<a name="v010" class="anchor" href="#v010"><span class="octicon octicon-link"></span></a>v0.1.0</h4>
 
 <ul>
 <li>Fixes CLI options examples</li>
