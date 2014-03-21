@@ -124,6 +124,7 @@ See the project for more information, options and examples: [load-grunt-configs]
 
 #### v0.5.1
 
+* Use util.inspect for js generation
 * Add cson support
 * Fix incorrect testing
 * Update .travis.yml to test all branches
