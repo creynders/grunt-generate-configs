@@ -46,7 +46,7 @@ module.exports = function(grunt){
             data   : grunt.config.data
         };
 
-        if(grunt.file.exists(opts.target)){
+        if(grunt.file.exists(opts.target) && !grunt.option('no-prompt')){
             inquirer.prompt([
                 {
                     type    : "confirm",

@@ -37,6 +37,7 @@ The command will parse your grunt configuration object and automatically create 
 * `--target=<dir>` you can specify the output directory using the `target`-flag. E.g.: `grunt generate_configs --target=foo` will create a `foo` directory instead of `config`.
 * `--type=[js|json|coffee|cson|yaml|yml]` allows you to output the configuration objects as `json`, `yaml`, `cson`, `coffee` or `js` files.
 * `--json`, `--coffee`, `--cson`, `--js`, `--yaml` and `--yml` as shorthand for `type=<type>`. The `type` flag will always override any shorthands.
+* `--no-prompt` allows you to skip the default prompt about overwriting and already existing directory.
 
 ## Examples
 
@@ -121,6 +122,10 @@ See the project for more information, options and examples: [load-grunt-configs]
 * cson: TODO
 
 ## Changelog
+
+#### v0.5.2
+
+* Add --no-prompt flag
 
 #### v0.5.1
 
