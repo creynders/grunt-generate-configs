@@ -20,7 +20,7 @@ module.exports = function(grunt){
     grunt.loadTasks('tasks');
 
     // These plugins provide necessary tasks.
-    require('load-grunt-tasks')(grunt);
+    require('jit-grunt')(grunt);
 
     // Project configuration.
     grunt.initConfig({
