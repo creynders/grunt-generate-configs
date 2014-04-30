@@ -14,6 +14,8 @@
 
 module.exports = function(grunt){
 
+    var loadGruntConfigs = require('load-grunt-configs');
+
     // Actually load this plugin's task(s).
     grunt.loadTasks('tasks');
 
@@ -108,9 +110,13 @@ module.exports = function(grunt){
 
     function generateConfigs(flags){
         grunt.task.run([
-            'set_options:' + flags, 'clean:config', 'generate_configs', 'nodeunit', 'clean:config'
+            'set_options:' + flags, 'clean:config', 'generate_configs', 'nodeunit', 'load-grunt-configs', 'clean:config'
         ]);
     }
+
+    grunt.registerTask('load-grunt-configs', function(){
+        loadGruntConfigs(grunt);
+    });
 
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.

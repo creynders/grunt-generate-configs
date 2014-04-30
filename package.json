@@ -33,7 +33,6 @@
     "js-yaml": "~3.0.1",
     "js2coffee": "~0.2.7",
     "rimraf": "~2.2.6",
-    "cson": "^1.4.5",
     "js-beautify": "^1.4.2"
   },
   "devDependencies": {
@@ -47,7 +46,8 @@
     "grunt-contrib-connect": "~0.6.0",
     "glob": "~3.2.8",
     "lodash": "~2.4.1",
-    "minimist": "0.0.7"
+    "minimist": "0.0.7",
+    "load-grunt-configs": "^0.4.0"
   },
   "peerDependencies": {
     "grunt": "~0.4.2"
