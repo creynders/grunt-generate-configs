@@ -123,56 +123,33 @@ See the project for more information, options and examples: [load-grunt-configs]
 
 ## Changelog
 
-#### v0.5.2
-
-* Add --no-prompt flag
-
-#### v0.5.1
-
-* Use util.inspect for js generation
-* Add cson support
-* Fix incorrect testing
-* Update .travis.yml to test all branches
-* Remove support for node < v0.10
-
-#### v0.5.0
-
-* Update unit tests to include all flags
-* Expose main method for parsing of grunt config obj
-* Add js, coffee, yaml, json flags
-* Separate filegen to lib and add removal of config dir upon overwrite
-
-#### v0.4.1
-
-* Makes the command global
-
-#### v0.4.0
-
-* adds cli
-
-#### v0.3.0
-
-* Adds demos
-* Adds yaml support
-* Adds Coffeescript support
-
-#### v0.2.0
-
-* Test all possibilities, idiot!
-* fixes #2, incorrect ext for js files
-
-#### v0.1.2
-
-* Fixes #1, moved inquirer from devDeps to deps
-
-#### v0.1.1
-
-* keywords, keywords, keywords, sigh
-
-#### v0.1.0
-
-* Fixes CLI options examples
-* creates task grunt-generate-configs
+* __v0.6.0__: Switch to safe cson
+* __v0.5.2__: Add --no-prompt flag
+* __v0.5.1__:
+    * Use util.inspect for js generation
+    * Add cson support
+    * Fix incorrect testing
+    * Update .travis.yml to test all branches
+    * Remove support for node < v0.10
+* __v0.5.0__:
+    * Update unit tests to include all flags
+    * Expose main method for parsing of grunt config obj
+    * Add js, coffee, yaml, json flags
+    * Separate filegen to lib and add removal of config dir upon overwrite
+* __v0.4.1__: Makes the command global
+* __v0.4.0__: adds cli
+* __v0.3.0__:
+    * Adds demos
+    * Adds yaml support
+    * Adds Coffeescript support
+* __v0.2.0__:
+    * Test all possibilities, idiot!
+    * fixes #2, incorrect ext for js files
+* __v0.1.2__: Fixes #1, moved inquirer from devDeps to deps
+* __v0.1.1__: keywords, keywords, keywords, sigh
+* __v0.1.0__:
+    * Fixes CLI options examples
+    * creates task grunt-generate-configs
 
 ## License
 
