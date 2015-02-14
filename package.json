@@ -31,7 +31,7 @@
   "dependencies": {
     "inquirer": "~0.4.0",
     "js-yaml": "~3.0.1",
-    "js2coffee": "~0.2.7",
+    "js2coffee": "^2.0.3",
     "rimraf": "~2.2.6",
     "js-beautify": "^1.4.2"
   },
