@@ -126,6 +126,7 @@ See the project for more information, options and examples: [load-grunt-configs]
 
 ## Changelog
 
+* __v0.6.1__: Update dependencies
 * __v0.6.0__: Switch to safe cson
 * __v0.5.2__: Add --no-prompt flag
 * __v0.5.1__:
