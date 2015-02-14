@@ -1,4 +1,7 @@
-# grunt-generate-configs [![GitHub version](https://badge.fury.io/gh/creynders%2Fgrunt-generate-configs.png)](http://badge.fury.io/gh/creynders%2Fgrunt-generate-configs)[![Build Status](https://secure.travis-ci.org/creynders/grunt-generate-configs.png?branch=master)](http://travis-ci.org/creynders/grunt-generate-configs)
+# grunt-generate-configs 
+[![npm version](https://badge.fury.io/js/grunt-generate-configs.svg)](http://badge.fury.io/js/grunt-generate-configs)
+[![Build Status](https://secure.travis-ci.org/creynders/grunt-generate-configs.svg?branch=master)](http://travis-ci.org/creynders/grunt-generate-configs)
+[![Dependency Status](https://david-dm.org/creynders/grunt-generate-configs.svg)](https://david-dm.org/creynders/grunt-generate-configs#info=dependencies)
 
 > CLI to generate separate grunt configuration files automatically
 
