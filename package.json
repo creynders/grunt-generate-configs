@@ -1,7 +1,7 @@
 {
   "name": "grunt-generate-configs",
   "description": "CLI to generate separate grunt configuration files automatically",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "homepage": "https://github.com/creynders/grunt-generate-configs",
   "preferGlobal": true,
   "author": {
